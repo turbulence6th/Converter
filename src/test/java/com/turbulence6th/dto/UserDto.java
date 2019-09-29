@@ -1,12 +1,13 @@
 package com.turbulence6th.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class UserDto {
 
     private String username;
     private LocalDate cdate;
-    private AddressDto address;
+    private List<AddressDto> addresses;
 
     public String getUsername() {
         return username;
@@ -24,11 +25,11 @@ public class UserDto {
         this.cdate = cdate;
     }
 
-    public AddressDto getAddress() {
-        return address;
+    public List<AddressDto> getAddresses() {
+        return addresses;
     }
 
-    public void setAddress(AddressDto address) {
-        this.address = address;
+    public void setAddresses(List<AddressDto> addresses) {
+        this.addresses = addresses;
     }
 }

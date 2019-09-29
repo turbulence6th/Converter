@@ -1,12 +1,13 @@
 package com.turbulence6th.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class User {
 
     private String username;
     private LocalDate cdate;
-    private Address address;
+    private List<Address> addresses;
 
     public String getUsername() {
         return username;
@@ -24,11 +25,11 @@ public class User {
         this.cdate = cdate;
     }
 
-    public Address getAddress() {
-        return address;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 }

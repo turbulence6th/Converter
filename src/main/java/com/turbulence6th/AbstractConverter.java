@@ -1,5 +1,8 @@
 package com.turbulence6th;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public abstract class AbstractConverter<E, D> {
 
     protected abstract Creator<E> createEntity();
@@ -17,6 +20,12 @@ public abstract class AbstractConverter<E, D> {
         return entity;
     }
 
+    public final List<E> convertToEntityList(List<D> dtos) {
+        return dtos.stream()
+                .map(this::convertToEntity)
+                .collect(Collectors.toList());
+    }
+
     public final D convertToDto(E entity) {
         MapCaller<D, E> mapCaller = fillDto();
         D dto = createDto().create();
@@ -25,5 +34,11 @@ public abstract class AbstractConverter<E, D> {
         mapCaller.call(mapper);
 
         return dto;
+    }
+
+    public final List<D> convertToDtoList(List<E> entities) {
+        return entities.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 }

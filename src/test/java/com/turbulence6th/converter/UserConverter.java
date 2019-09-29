@@ -29,7 +29,7 @@ public class UserConverter extends AbstractConverter<User, UserDto> {
         return mapper -> {
             mapper.map(User::setUsername, UserDto::getUsername);
             mapper.map(User::setCdate, UserDto::getCdate);
-            mapper.map(User::setAddress, UserDto::getAddress, addressConverter::convertToEntity);
+            mapper.map(User::setAddresses, UserDto::getAddresses, addressConverter::convertToEntityList);
         };
     }
 
@@ -38,7 +38,7 @@ public class UserConverter extends AbstractConverter<User, UserDto> {
         return mapper -> {
             mapper.map(UserDto::setUsername, User::getUsername);
             mapper.map(UserDto::setCdate, User::getCdate);
-            mapper.map(UserDto::setAddress, User::getAddress, addressConverter::convertToDto);
+            mapper.map(UserDto::setAddresses, User::getAddresses, addressConverter::convertToDtoList);
         };
     }
 }

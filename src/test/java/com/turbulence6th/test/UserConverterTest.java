@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Collections;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -32,8 +33,8 @@ public class UserConverterTest {
 
         assertThat("turbulence6th", is(user.getUsername()));
         assertThat(LocalDate.of(2019, Month.AUGUST, 1), is(user.getCdate()));
-        assertThat("Paris", is(user.getAddress().getCity()));
-        assertThat("Rue de Rivoli", is(user.getAddress().getStreet()));
+        assertThat("Paris", is(user.getAddresses().get(0).getCity()));
+        assertThat("Rue de Rivoli", is(user.getAddresses().get(0).getStreet()));
     }
 
     private AddressDto createAddressDto() {
@@ -47,7 +48,7 @@ public class UserConverterTest {
         UserDto userDto = new UserDto();
         userDto.setUsername("turbulence6th");
         userDto.setCdate(LocalDate.of(2019, Month.AUGUST, 1));
-        userDto.setAddress(createAddressDto());
+        userDto.setAddresses(Collections.singletonList(createAddressDto()));
         return userDto;
     }
 }
